@@ -1,6 +1,3 @@
-# Overview
-We are NCKU_ACVLAB. This is our implemented solution for "Automated Crop Disease Diagnosis from Hyperspectral Imagery 3rd" @ ICPR 2024. We achieved a score tied for first place with five other teams.
-
 # 1. Environment
 Run the prepare.sh to auto create the virtual environment:
 ```bash
