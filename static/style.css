@@ -1,0 +1,149 @@
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #202123; /* ChatGPT dark mode background */
+  color: #f8f9fa; /* Light text for contrast */
+}
+
+#wrapper {
+  display: flex;
+}
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+  width: 15rem;
+}
+
+#page-content-wrapper {
+  min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0;
+}
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0;
+  }
+
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%;
+  }
+
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem;
+  }
+}
+
+.container-fluid {
+  background: #202123; /* ChatGPT dark mode background */
+  padding: 2.5rem; /* Increased padding */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  text-align: center;
+  max-width: 800px; /* Increased max-width */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  color: #f8f9fa; /* Light color for heading */
+  font-weight: 600; /* Slightly bolder heading */
+}
+#upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.custom-file-label {
+  background-color: #40414F; /* ChatGPT dark mode text box color */
+  color: #f8f9fa; /* Light text for contrast */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s;
+  display: flex; /* Use flexbox for vertical centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally if needed */
+}
+.custom-file-label:hover {
+  background-color: #50515F; /* Slightly lighter on hover */
+}
+.file-label {
+    color: #f8f9fa; /* Ensure text is visible */
+}
+.custom-file-input {
+  display: none;
+}
+#submit-btn {
+  font-size: 1.1rem; /* Slightly larger button text */
+}
+#result {
+  margin-top: 1.5rem;
+  font-size: 1.3rem; /* Slightly larger result text */
+  font-weight: bold;
+  color: #28a745; /* Green for positive results */
+}
+.text-white {
+    color: #f8f9fa !important;
+}
+
+.navbar {
+    background-color: #343541 !important; /* Darker navbar to compliment the theme */
+}
+.navbar-light .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+.navbar-light .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+#image-preview {
+  margin-top: 1rem;
+  max-width: 100%;
+  max-height: 250px; /* Slightly larger preview */
+  border-radius: 8px; /* More rounded image corners */
+  object-fit: contain;
+  border: 1px solid #ced4da; /* Light border for images */
+}
+.spinner-border {
+  display: none;
+  margin: 1rem auto 0;
+}
+#index-graphs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+#index-graphs img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+  border: 1px solid #ced4da; /* Light border for images */
+  border-radius: 8px;
+}
+</content>
+<task_progress>
+- [x] Extract CSS to a separate file
+- [x] Link the new CSS file in `index.html`
+- [x] Integrate a modern CSS framework (Bootstrap)
+- [x] Enhance visual elements (typography, color palette, layout, interactive elements, background)
+- [ ] Add responsive design considerations
+</task_progress>
