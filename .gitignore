@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.env
+.vscode/
+
+# Flask
+instance/
+.flaskenv
+
+# Uploads and Generated Files
+uploads/
+static/generated/
+
+# Model files
+model.txt
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# OS generated files
+.DS_Store
+Thumbs.db

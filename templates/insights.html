@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Insights</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  </head>
+  <body>
+    <div class="d-flex" id="wrapper">
+      <!-- Sidebar -->
+      <div class="bg-dark border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading text-white">Crop Disease AI</div>
+        <div class="list-group list-group-flush">
+          <a href="/" class="list-group-item list-group-item-action bg-dark text-white"><i class="fas fa-leaf mr-2"></i>FHB Disease Classification</a>
+          <a href="/insights" class="list-group-item list-group-item-action bg-dark text-white"><i class="fas fa-chart-line mr-2"></i>Insights</a>
+        </div>
+      </div>
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+          <button class="btn btn-primary" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+        <div class="container-fluid mt-5">
+          <h1 class="mb-4 text-white">Insights for Farmers</h1>
+          <div class="spinner-border text-primary mt-4" role="status" id="spinner" style="display:none;">
+            <span class="sr-only">Loading...</span>
+          </div>
+          <div class="card bg-secondary text-white" style="background-color: #40414F !important;">
+            <div class="card-body">
+              <h5 class="card-title">NDVI Mean Value: <span id="ndvi-mean">N/A</span></h5>
+              <h5 class="card-title">Disease Classification: <span id="disease-classification">N/A</span></h5>
+              <p class="card-text">Based on the provided data, here are some insights:</p>
+              <ul id="insights-list" class="list-unstyled">
+                <li id="ndvi-insight"></li>
+                <li id="disease-insight"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+      });
+
+      // Function to fetch and display insights
+      async function fetchAndDisplayInsights() {
+        document.getElementById('spinner').style.display = 'block'; // Show spinner while loading
+        try {
+          const response = await fetch('/get_last_prediction_data');
+          if (!response.ok) {
+            throw new Error('No previous prediction data found');
+          }
+          const data = await response.json();
+
+          document.getElementById('ndvi-mean').innerText = data.ndvi_mean ? data.ndvi_mean.toFixed(4) : 'N/A';
+          document.getElementById('disease-classification').innerText = data.prediction || 'N/A';
+          document.getElementById('ndvi-insight').innerText = data.ndvi_insights || 'No NDVI insights available.';
+          document.getElementById('disease-insight').innerText = data.disease_insights || 'No disease insights available.';
+
+        } catch (error) {
+          console.log("No previous prediction data to display insights:", error.message);
+          document.getElementById('ndvi-mean').innerText = 'N/A';
+          document.getElementById('disease-classification').innerText = 'N/A';
+          document.getElementById('ndvi-insight').innerText = 'No NDVI insights available.';
+          document.getElementById('disease-insight').innerText = 'No disease insights available.';
+        } finally {
+          document.getElementById('spinner').style.display = 'none'; // Hide spinner after loading
+        }
+      }
+
+      // Call on page load
+      window.addEventListener('load', fetchAndDisplayInsights);
+    </script>
+  </body>
+</html>
